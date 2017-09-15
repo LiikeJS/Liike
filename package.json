@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pakastin/liike/issues"
   },
-  "homepage": "https://github.com/pakastin/liike#readme"
+  "homepage": "https://github.com/pakastin/liike#readme",
+  "devDependencies": {
+    "express": "~4.15.4"
+  }
 }
