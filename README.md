@@ -55,7 +55,7 @@ tween($hello, {
 - onprogress: callback while tweening `onprogress(target, t)`
 - onend: callback when tween ends `onend(target)`
 
-# Available easings
+## Available easings
 - linear
 - quadIn, quadOut, quadInOut (power to 2)
 - cubicIn, cubicOut, cubicInOut (power to 3)
