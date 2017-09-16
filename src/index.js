@@ -25,16 +25,16 @@ const tick = (now) => {
     if (!tween.running) {
       tween.running = true;
       tween.init();
-      tween.onstart();
+      tween.onstart(tween.target);
     }
 
     const t = (now - tween.start) / (tween.end - tween.start);
 
     tween.tick((t < 1) ? t : 1);
-    tween.onprogress(t);
+    tween.onprogress(tween.target, t);
 
     if (now > tween.end) {
-      tween.onend();
+      tween.onend(tween.target);
       tweens.splice(i--, 1);
     }
   }

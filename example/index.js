@@ -1,66 +1,88 @@
 import liike from '../src/index.js';
 
 const transform = (target, data) => {
-  const { x = 0, y = 0, rotate = 0 } = data;
+  const { x = 0, y = 0, rotate = 0, opacity = 1 } = data;
 
-  target.style.transform = `translate(${x}px, ${y}) rotate(${rotate}deg)`;
+  target.style.transform = `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
+  target.style.opacity = opacity;
 };
 
 const tween = liike(transform);
-const $liike = document.getElementById('liike');
 
-$liike.textContent = 'Hello Liike!';
+const $sections = document.getElementsByTagName('section');
 
-tween($liike, {
-  delay: 1000,
-  duration: 1000,
-  easing: 'cubicInOut',
-  to: {
-    x: 100
+document.body.style.overflow = 'hidden';
+
+for (let j = 0; j < $sections.length; j++) {
+  const $section = $sections[j];
+  const $p = $section.getElementsByTagName('p')[0];
+
+  const words = $p.textContent.trim().split(' ');
+
+  $p.textContent = '';
+
+  $section.style.position = 'absolute';
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const $word = document.createElement('span');
+
+    $word.textContent = word;
+    $p.appendChild($word);
   }
-});
+}
 
-tween($liike, {
-  delay: 1250,
-  duration: 1500,
-  easing: 'sineInOut',
-  to: {
-    rotate: 180
-  }
-});
+const animate = () => {
+  let startTime = 0;
 
-tween($liike, {
-  delay: 2000,
-  duration: 1000,
-  easing: 'cubicInOut',
-  to: {
-    x: 0
-  }
-});
+  for (let j = 0; j < $sections.length; j++) {
+    const $section = $sections[j];
+    const $p = $section.getElementsByTagName('p')[0];
 
-tween($liike, {
-  delay: 3000,
-  duration: 1000,
-  easing: 'quartInOut',
-  to: {
-    x: 100
-  }
-});
+    const $words = $p.getElementsByTagName('span');
 
-tween($liike, {
-  delay: 3250,
-  duration: 1500,
-  easing: 'cubicInOut',
-  to: {
-    rotate: 360
-  }
-});
+    $section.style.position = 'absolute';
 
-tween($liike, {
-  delay: 4000,
-  duration: 1000,
-  easing: 'quartInOut',
-  to: {
-    x: 0
+    for (let i = 0; i < $words.length; i++) {
+      const $word = $words[i];
+
+      $word.style.opacity = 0;
+
+      tween($word, {
+        delay: startTime + i * 75,
+        duration: 1250,
+        easing: 'bounce',
+        from: {
+          y: -150,
+          opacity: 0
+        },
+        to: {
+          y: 0,
+          opacity: 1
+        }
+      });
+
+      tween($word, {
+        delay: startTime + 2500 + i * 75,
+        duration: 500,
+        easing: 'cubicIn',
+        onend: (target) => {
+          if (j === $sections.length - 1) {
+            if (i === $words.length - 1) {
+              setTimeout(() => {
+                animate();
+              }, 1000);
+            }
+          }
+        },
+        to: {
+          y: 150,
+          opacity: 0
+        }
+      });
+    }
+    startTime += 2500 + $words.length * 75;
   }
-});
+};
+
+animate();
