@@ -45,5 +45,14 @@ tween($hello, {
 });
 ```
 
+# Available easings
+- linear
+- quadIn, quadOut, quadInOut (power to 2)
+- cubicIn, cubicOut, cubicInOut (power to 3)
+- quartIn, quartOut, quartInOut (power to 4)
+- quintIn, quintOut, quintInOut (power to 5)
+- sineIn, sineOut, sineInOut
+- bounce
+
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
