@@ -1,6 +1,6 @@
 {
   "name": "liike",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Liike",
   "main": "docs/liike.min.js",
   "module": "docs/liike.es.js",
