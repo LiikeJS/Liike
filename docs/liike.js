@@ -76,10 +76,69 @@ Tween.prototype.tick = function tick (t) {
   this.handler(this.target, this.store);
 };
 
+var easeInBy = function (power) { return function (t) { return Math.pow(t, power); }; };
+var easeOutBy = function (power) { return function (t) { return 1 - Math.abs(Math.pow(t - 1, power)); }; };
+var easeInOutBy = function (power) { return function (t) { return t < 0.5 ? easeInBy(power)(t * 2) / 2 : easeOutBy(power)(t * 2 - 1) / 2 + 0.5; }; };
+
+var linear = function (t) { return t; };
+var quadIn = easeInBy(2);
+var quadOut = easeOutBy(2);
+var quadInOut = easeInOutBy(2);
+var cubicIn = easeInBy(3);
+var cubicOut = easeOutBy(3);
+var cubicInOut = easeInOutBy(3);
+var quartIn = easeInBy(4);
+var quartOut = easeOutBy(4);
+var quartInOut = easeInOutBy(4);
+var quintIn = easeInBy(5);
+var quintOut = easeOutBy(5);
+var quintInOut = easeInOutBy(5);
+var sineIn = function (t) { return 1 + Math.sin(Math.PI / 2 * t - Math.PI / 2); };
+var sineOut = function (t) { return Math.sin(Math.PI / 2 * t); };
+var sineInOut = function (t) { return (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2; };
+var bounce = function (t) {
+  var s = 7.5625;
+  var p = 2.75;
+
+  if (t < 1 / p) {
+    return s * t * t;
+  }
+  if (t < 2 / p) {
+    t -= 1.5 / p;
+    return s * t * t + 0.75;
+  }
+  if (t < 2.5 / p) {
+    t -= 2.25 / p;
+    return s * t * t + 0.9375;
+  }
+  t -= 2.625 / p;
+  return s * t * t + 0.984375;
+};
+
+
+var ease = Object.freeze({
+	linear: linear,
+	quadIn: quadIn,
+	quadOut: quadOut,
+	quadInOut: quadInOut,
+	cubicIn: cubicIn,
+	cubicOut: cubicOut,
+	cubicInOut: cubicInOut,
+	quartIn: quartIn,
+	quartOut: quartOut,
+	quartInOut: quartInOut,
+	quintIn: quintIn,
+	quintOut: quintOut,
+	quintInOut: quintInOut,
+	sineIn: sineIn,
+	sineOut: sineOut,
+	sineInOut: sineInOut,
+	bounce: bounce
+});
+
 var tweens = [];
 var jobs = [];
 var nullFunc = function () {};
-var linear = function (t) { return t; };
 
 var ticking = 0;
 
@@ -128,7 +187,7 @@ var index = function (handler) {
     var duration = settings.duration; if ( duration === void 0 ) duration = 0;
     var from = settings.from; if ( from === void 0 ) from = {};
     var to = settings.to; if ( to === void 0 ) to = {};
-    var easing = settings.easing; if ( easing === void 0 ) easing = linear;
+    var easing = settings.easing; if ( easing === void 0 ) easing = 'linear';
     var onprogress = settings.onprogress; if ( onprogress === void 0 ) onprogress = nullFunc;
     var onstart = settings.onstart; if ( onstart === void 0 ) onstart = nullFunc;
     var onend = settings.onend; if ( onend === void 0 ) onend = nullFunc;
@@ -139,7 +198,7 @@ var index = function (handler) {
         end: now + delay + duration,
         from: from,
         to: to,
-        easing: easing,
+        easing: ease[easing],
         onstart: onstart,
         onprogress: onprogress,
         onend: onend

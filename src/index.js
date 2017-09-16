@@ -1,9 +1,9 @@
 import { Tween } from './tween.js';
+import * as ease from './ease';
 
 const tweens = [];
 const jobs = [];
 const nullFunc = () => {};
-const linear = t => t;
 
 let ticking = 0;
 
@@ -53,7 +53,7 @@ export default (handler) => {
       duration = 0,
       from = {},
       to = {},
-      easing = linear,
+      easing = 'linear',
       onprogress = nullFunc,
       onstart = nullFunc,
       onend = nullFunc
@@ -65,7 +65,7 @@ export default (handler) => {
         end: now + delay + duration,
         from,
         to,
-        easing,
+        easing: ease[easing],
         onstart,
         onprogress,
         onend
