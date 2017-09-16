@@ -20,13 +20,13 @@ for (let j = 0; j < $sections.length; j++) {
   const words = $p.textContent.trim().split(' ');
 
   $p.textContent = '';
-
   $section.style.position = 'absolute';
 
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     const $word = document.createElement('span');
 
+    $word.style.opacity = 0;
     $word.textContent = word;
     $p.appendChild($word);
   }
@@ -71,7 +71,7 @@ const animate = () => {
             if (i === $words.length - 1) {
               setTimeout(() => {
                 animate();
-              }, 1000);
+              }, 2000);
             }
           }
         },
@@ -85,4 +85,6 @@ const animate = () => {
   }
 };
 
-animate();
+setTimeout(() => {
+  animate();
+}, 1000);
