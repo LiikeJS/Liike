@@ -1,13 +1,13 @@
 # Liike
 *Liike* is a Finnish word and means *movement*, *motion*. It's a minimalistic library to create performant custom JS tweens no matter what you're tweening.
 
+(work in progress..)
+
 # Example
 
 
 https://liike.js.org
 - [Source](https://github.com/pakastin/Liike/blob/master/example/index.js)
-
-(work in progress..)
 
 # Install
 ```
