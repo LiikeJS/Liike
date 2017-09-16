@@ -1,5 +1,5 @@
 {
-  "name": "Liike",
+  "name": "liike",
   "version": "0.5.1",
   "description": "Tiny JS tweening library.",
   "main": "docs/liike.min.js",
