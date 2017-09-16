@@ -10,7 +10,8 @@
 ```
 npm i liike
 ```
-- ES6 module bundle: https://pakastin.github.io/Liike/liike.es.js
+- ES6 module production: https://pakastin.github.io/Liike/liike.es.min.js
+- ES6 module development: https://pakastin.github.io/Liike/liike.es.js
 - Production: https://pakastin.github.io/Liike/liike.min.js
 - Development: https://pakastin.github.io/Liike/liike.js
 
