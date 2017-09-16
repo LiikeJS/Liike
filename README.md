@@ -51,9 +51,9 @@ tween($hello, {
 - easing: Check available easing functions [below](#available-easings)
 - from: Values to start from
 - to: Values to tween to
-- onstart: callback when tween starts `onstart(target)`
-- onprogress: callback while tweening `onprogress(target, t)`
-- onend: callback when tween ends `onend(target)`
+- onstart: Callback for tween start `onstart(target)`
+- onprogress: Callback for progress `onprogress(target, t)`
+- onend: Callback for tween end `onend(target)`
 
 ## Available easings
 - linear
