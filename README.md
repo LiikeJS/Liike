@@ -6,5 +6,13 @@
 
 (work in progress..)
 
+# Install
+```
+npm i liike
+```
+- ES6 module bundle: https://pakastin.github.io/Liike/liike.es.js
+- Production: https://pakastin.github.io/Liike/liike.min.js
+- Development: https://pakastin.github.io/Liike/liike.js
+
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
