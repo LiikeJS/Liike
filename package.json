@@ -9,16 +9,16 @@
     "build-dev": "rollup -c rollup.dev.config.js -n liike -f umd -w -i src/index.js -o docs/liike.js",
     "example": "rollup -c -f iife -w -i example/index.js -o docs/example.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Juha Lindstedt",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pakastin/liike.git"
+    "url": "git+https://github.com/pakastin/Liike.git"
   },
   "bugs": {
-    "url": "https://github.com/pakastin/liike/issues"
+    "url": "https://github.com/pakastin/Liike/issues"
   },
-  "homepage": "https://github.com/pakastin/liike#readme",
+  "homepage": "https://github.com/pakastin/Liike#readme",
   "devDependencies": {
     "express": "~4.15.4",
     "rollup": "~0.49.3",
