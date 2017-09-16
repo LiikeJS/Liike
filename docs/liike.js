@@ -194,4 +194,31 @@ tween($liike, {
   }
 });
 
+tween($liike, {
+  delay: 3000,
+  duration: 1000,
+  easing: easeInOutBy(3),
+  to: {
+    x: 100
+  }
+});
+
+tween($liike, {
+  delay: 3250,
+  duration: 1500,
+  easing: easeInOutBy(3),
+  to: {
+    rotate: 360
+  }
+});
+
+tween($liike, {
+  delay: 4000,
+  duration: 1000,
+  easing: easeInOutBy(3),
+  to: {
+    x: 0
+  }
+});
+
 }());
