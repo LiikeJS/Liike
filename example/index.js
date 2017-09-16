@@ -1,9 +1,5 @@
 import liike from '../src/index.js';
 
-const cubicInOut = 'cubicInOut';
-const quartInOut = 'quartInOut';
-const sineInOut = 'sineInOut';
-
 const transform = (target, data) => {
   const { x = 0, y = 0, rotate = 0 } = data;
 
@@ -18,7 +14,7 @@ $liike.textContent = 'Hello Liike!';
 tween($liike, {
   delay: 1000,
   duration: 1000,
-  easing: cubicInOut,
+  easing: 'cubicInOut',
   to: {
     x: 100
   }
@@ -27,7 +23,7 @@ tween($liike, {
 tween($liike, {
   delay: 1250,
   duration: 1500,
-  easing: sineInOut,
+  easing: 'sineInOut',
   to: {
     rotate: 180
   }
@@ -36,7 +32,7 @@ tween($liike, {
 tween($liike, {
   delay: 2000,
   duration: 1000,
-  easing: cubicInOut,
+  easing: 'cubicInOut',
   to: {
     x: 0
   }
@@ -45,7 +41,7 @@ tween($liike, {
 tween($liike, {
   delay: 3000,
   duration: 1000,
-  easing: quartInOut,
+  easing: 'quartInOut',
   to: {
     x: 100
   }
@@ -54,7 +50,7 @@ tween($liike, {
 tween($liike, {
   delay: 3250,
   duration: 1500,
-  easing: cubicInOut,
+  easing: 'cubicInOut',
   to: {
     rotate: 360
   }
@@ -63,7 +59,7 @@ tween($liike, {
 tween($liike, {
   delay: 4000,
   duration: 1000,
-  easing: quartInOut,
+  easing: 'quartInOut',
   to: {
     x: 0
   }
