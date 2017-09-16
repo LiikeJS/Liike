@@ -2,10 +2,13 @@
   "name": "liike",
   "version": "0.1.0",
   "description": "Liike",
-  "main": "index.js",
+  "main": "docs/liike.min.js",
+  "module": "docs/liike.es.js",
+  "jsnext:main": "docs/liike.es.js",
   "scripts": {
     "dev": "node watch",
     "build": "rollup -c -n liike -f umd -w -i src/index.js -o docs/liike.min.js",
+    "build-es": "rollup -c -n liike -f es -w -i src/index.js -o docs/liike.es.js",
     "build-dev": "rollup -c rollup.dev.config.js -n liike -f umd -w -i src/index.js -o docs/liike.js",
     "example": "rollup -c -f iife -w -i example/index.js -o docs/example.js"
   },
