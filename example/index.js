@@ -71,7 +71,7 @@ const animate = () => {
             if (i === $words.length - 1) {
               setTimeout(() => {
                 animate();
-              }, 2000);
+              }, 1000);
             }
           }
         },
