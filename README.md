@@ -1,3 +1,10 @@
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?maxAge=60&style=flat-square)](https://github.com/Flet/semistandard)
+[![npm](https://img.shields.io/npm/v/liike.svg?maxAge=60&style=flat-square)](https://www.npmjs.com/package/liike)
+[![npm](https://img.shields.io/npm/l/liike.svg?maxAge=60&style=flat-square)](https://github.com/liike/liike/blob/master/LICENSE)
+[![Join the chat at https://gitter.im/pakastin/liike](https://badges.gitter.im/pakastin/liike.svg)](https://gitter.im/pakastin/liike?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Twitter Follow](https://img.shields.io/twitter/follow/pakastin.svg?style=social&maxAge=60)](https://twitter.com/pakastin)
+[![Twitter Follow](https://img.shields.io/twitter/follow/LiikeJS.svg?style=social&maxAge=60)](https://twitter.com/LiikeJS)
+
 # Liike
 *Liike* is a Finnish word and means *movement*, *motion*. It's a minimalistic library to create performant custom JS tweens no matter what you're tweening.
 
