@@ -5,3 +5,6 @@
 - [Source](https://github.com/pakastin/Liike/blob/master/example/index.js)
 
 (work in progress..)
+
+# License
+- [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
