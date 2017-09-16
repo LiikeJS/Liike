@@ -81,7 +81,7 @@ const animate = () => {
         }
       });
     }
-    startTime += 2500 + $words.length * 50;
+    startTime += 2600 + $words.length * 50;
   }
 };
 
