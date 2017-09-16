@@ -63,7 +63,7 @@ const animate = () => {
       });
 
       tween($word, {
-        delay: startTime + 2500 + i * 75,
+        delay: startTime + 2500 + ($words.length - i - 1) * 50,
         duration: 500,
         easing: 'cubicIn',
         onend: (target) => {
@@ -81,7 +81,7 @@ const animate = () => {
         }
       });
     }
-    startTime += 2500 + $words.length * 75;
+    startTime += 2500 + $words.length * 50;
   }
 };
 
