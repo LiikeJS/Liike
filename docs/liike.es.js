@@ -1,1 +1,209 @@
-var Tween=function d(a,b,c){var e=c.start,f=c.end,g=c.from,h=c.to,i=c.easing,j=c.onstart,k=c.onprogress,l=c.onend;this.target=a;this.handler=b;this.start=e;this.end=f;this.easing=i;this.from=g;this.to=h;this.keys=[];this.onstart=j;this.onprogress=k;this.onend=l;this.running=!1;this.store=a.__liike||(a.__liike={})};Tween.prototype.init=function a(){var b=this,c=this,d=c.from,e=c.to,f=c.keys;for(var g in e)(g in d)||(d[g]=b.store[g]||0),f.push(g);for(var h in d)(h in e)||(e[h]=b.store[h]||0,f.push(h))};Tween.prototype.tick=function b(a){var c=this,d=this,e=d.keys,f=d.from,g=d.to,h=d.easing,i=h(a);for(var j=0;j<e.length;j++){var k=e[j];c.store[k]=f[k]+(g[k]-f[k])*i}this.handler(this.target,this.store)};var easeInBy=function(a){return function(b){return Math.pow(b,a)}},easeOutBy=function(a){return function(b){return 1-Math.abs(Math.pow(b-1,a))}},easeInOutBy=function(a){return function(b){return b<0.5?easeInBy(a)(b*2)/2:easeOutBy(a)(b*2-1)/2+0.5}},linear=function(a){return a},quadIn=easeInBy(2),quadOut=easeOutBy(2),quadInOut=easeInOutBy(2),cubicIn=easeInBy(3),cubicOut=easeOutBy(3),cubicInOut=easeInOutBy(3),quartIn=easeInBy(4),quartOut=easeOutBy(4),quartInOut=easeInOutBy(4),quintIn=easeInBy(5),quintOut=easeOutBy(5),quintInOut=easeInOutBy(5),sineIn=function(a){return 1+Math.sin(Math.PI/2*a-Math.PI/2)},sineOut=function(a){return Math.sin(Math.PI/2*a)},sineInOut=function(a){return(1+Math.sin(Math.PI*a-Math.PI/2))/2},bounce=function(a){var b=7.5625,c=2.75;if(a<1/c){return b*a*a}if(a<2/c){a-=1.5/c;return b*a*a+0.75}if(a<2.5/c){a-=2.25/c;return b*a*a+0.9375}a-=2.625/c;return b*a*a+0.984375},ease=Object.freeze({linear:linear,quadIn:quadIn,quadOut:quadOut,quadInOut:quadInOut,cubicIn:cubicIn,cubicOut:cubicOut,cubicInOut:cubicInOut,quartIn:quartIn,quartOut:quartOut,quartInOut:quartInOut,quintIn:quintIn,quintOut:quintOut,quintInOut:quintInOut,sineIn:sineIn,sineOut:sineOut,sineInOut:sineInOut,bounce:bounce}),tweens=[],jobs=[],nullFunc=function(){},ticking=0,tick=function(a){while(jobs.length){var b=jobs.shift();b(a)}for(var c=0;c<tweens.length;c++){var d=tweens[c];if(a<d.start){continue}d.running||(d.running=!0,d.init(),d.onstart());var e=(a-d.start)/(d.end-d.start);d.tick(e<1?e:1);d.onprogress(e);a>d.end&&(d.onend(),tweens.splice(c--,1))}jobs.length||tweens.length?(ticking=window.requestAnimationFrame(tick)):(ticking=0)},index=function(a){return function(b,c){var d=c.delay;d===void 0&&(d=0);var e=c.duration;e===void 0&&(e=0);var f=c.from;f===void 0&&(f={});var g=c.to;g===void 0&&(g={});var h=c.easing;h===void 0&&(h='linear');var i=c.onprogress;i===void 0&&(i=nullFunc);var j=c.onstart;j===void 0&&(j=nullFunc);var k=c.onend;k===void 0&&(k=nullFunc);jobs.push(function(c){var l=new Tween(b,a,{start:c+d,end:c+d+e,from:f,to:g,easing:ease[h],onstart:j,onprogress:i,onend:k});tweens.push(l)});ticking||(ticking=window.requestAnimationFrame(tick))}};export default index
+var Tween = function Tween (target, handler, settings) {
+  var start = settings.start;
+  var end = settings.end;
+  var from = settings.from;
+  var to = settings.to;
+  var easing = settings.easing;
+  var onstart = settings.onstart;
+  var onprogress = settings.onprogress;
+  var onend = settings.onend;
+
+  this.target = target;
+  this.handler = handler;
+
+  this.start = start;
+  this.end = end;
+
+  this.easing = easing;
+
+  this.from = from;
+  this.to = to;
+  this.keys = [];
+
+  this.onstart = onstart;
+  this.onprogress = onprogress;
+  this.onend = onend;
+
+  this.running = false;
+
+  this.store = target.__liike || (target.__liike = {});
+};
+Tween.prototype.init = function init () {
+    var this$1 = this;
+
+  var ref = this;
+    var from = ref.from;
+    var to = ref.to;
+    var keys = ref.keys;
+
+  for (var key in to) {
+    if (!(key in from)) {
+      from[key] = this$1.store[key] || 0;
+    }
+    keys.push(key);
+  }
+
+  for (var key$1 in from) {
+    if (!(key$1 in to)) {
+      to[key$1] = this$1.store[key$1] || 0;
+      keys.push(key$1);
+    }
+  }
+};
+Tween.prototype.tick = function tick (t) {
+    var this$1 = this;
+
+  var ref = this;
+    var keys = ref.keys;
+    var from = ref.from;
+    var to = ref.to;
+    var easing = ref.easing;
+
+  var e = easing(t);
+
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+
+    this$1.store[key] = from[key] + (to[key] - from[key]) * e;
+  }
+
+  this.handler(this.target, this.store);
+};
+
+var easeInBy = function (power) { return function (t) { return Math.pow(t, power); }; };
+var easeOutBy = function (power) { return function (t) { return 1 - Math.abs(Math.pow(t - 1, power)); }; };
+var easeInOutBy = function (power) { return function (t) { return t < 0.5 ? easeInBy(power)(t * 2) / 2 : easeOutBy(power)(t * 2 - 1) / 2 + 0.5; }; };
+
+var linear = function (t) { return t; };
+var quadIn = easeInBy(2);
+var quadOut = easeOutBy(2);
+var quadInOut = easeInOutBy(2);
+var cubicIn = easeInBy(3);
+var cubicOut = easeOutBy(3);
+var cubicInOut = easeInOutBy(3);
+var quartIn = easeInBy(4);
+var quartOut = easeOutBy(4);
+var quartInOut = easeInOutBy(4);
+var quintIn = easeInBy(5);
+var quintOut = easeOutBy(5);
+var quintInOut = easeInOutBy(5);
+var sineIn = function (t) { return 1 + Math.sin(Math.PI / 2 * t - Math.PI / 2); };
+var sineOut = function (t) { return Math.sin(Math.PI / 2 * t); };
+var sineInOut = function (t) { return (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2; };
+var bounce = function (t) {
+  var s = 7.5625;
+  var p = 2.75;
+
+  if (t < 1 / p) {
+    return s * t * t;
+  }
+  if (t < 2 / p) {
+    t -= 1.5 / p;
+    return s * t * t + 0.75;
+  }
+  if (t < 2.5 / p) {
+    t -= 2.25 / p;
+    return s * t * t + 0.9375;
+  }
+  t -= 2.625 / p;
+  return s * t * t + 0.984375;
+};
+
+
+var ease = Object.freeze({
+	linear: linear,
+	quadIn: quadIn,
+	quadOut: quadOut,
+	quadInOut: quadInOut,
+	cubicIn: cubicIn,
+	cubicOut: cubicOut,
+	cubicInOut: cubicInOut,
+	quartIn: quartIn,
+	quartOut: quartOut,
+	quartInOut: quartInOut,
+	quintIn: quintIn,
+	quintOut: quintOut,
+	quintInOut: quintInOut,
+	sineIn: sineIn,
+	sineOut: sineOut,
+	sineInOut: sineInOut,
+	bounce: bounce
+});
+
+var tweens = [];
+var jobs = [];
+var nullFunc = function () {};
+
+var ticking = 0;
+
+var tick = function (now) {
+  while (jobs.length) {
+    var job = jobs.shift();
+
+    job(now);
+  }
+
+  for (var i = 0; i < tweens.length; i++) {
+    var tween = tweens[i];
+
+    if (now < tween.start) {
+      // not yet started
+      continue;
+    }
+
+    if (!tween.running) {
+      tween.running = true;
+      tween.init();
+      tween.onstart();
+    }
+
+    var t = (now - tween.start) / (tween.end - tween.start);
+
+    tween.tick((t < 1) ? t : 1);
+    tween.onprogress(t);
+
+    if (now > tween.end) {
+      tween.onend();
+      tweens.splice(i--, 1);
+    }
+  }
+
+  if (jobs.length || tweens.length) {
+    ticking = window.requestAnimationFrame(tick);
+  } else {
+    ticking = 0;
+  }
+};
+
+var index = function (handler) {
+  return function (target, settings) {
+    var delay = settings.delay; if ( delay === void 0 ) delay = 0;
+    var duration = settings.duration; if ( duration === void 0 ) duration = 0;
+    var from = settings.from; if ( from === void 0 ) from = {};
+    var to = settings.to; if ( to === void 0 ) to = {};
+    var easing = settings.easing; if ( easing === void 0 ) easing = 'linear';
+    var onprogress = settings.onprogress; if ( onprogress === void 0 ) onprogress = nullFunc;
+    var onstart = settings.onstart; if ( onstart === void 0 ) onstart = nullFunc;
+    var onend = settings.onend; if ( onend === void 0 ) onend = nullFunc;
+
+    jobs.push(function (now) {
+      var tween = new Tween(target, handler, {
+        start: now + delay,
+        end: now + delay + duration,
+        from: from,
+        to: to,
+        easing: ease[easing],
+        onstart: onstart,
+        onprogress: onprogress,
+        onend: onend
+      });
+
+      tweens.push(tween);
+    });
+    if (!ticking) {
+      ticking = window.requestAnimationFrame(tick);
+    }
+  };
+};
+
+export default index;

@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "node watch",
     "build": "rollup -c -n liike -f umd -w -i src/index.js -o docs/liike.min.js",
-    "build-es": "rollup -c -n liike -f es -w -i src/index.js -o docs/liike.es.js",
+    "build-es": "rollup -c -n liike -f es -w -i src/index.js -o docs/liike.es.min.js",
+    "build-es-dev": "rollup -c rollup.dev.config.js -n liike -f es -w -i src/index.js -o docs/liike.es.js",
     "build-dev": "rollup -c rollup.dev.config.js -n liike -f umd -w -i src/index.js -o docs/liike.js",
     "example": "rollup -c -f iife -w -i example/index.js -o docs/example.js"
   },
