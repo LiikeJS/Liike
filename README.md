@@ -12,8 +12,8 @@ npm i liike
 ```
 - ES6 module production: https://pakastin.github.io/Liike/liike.es.min.js (~2.5 KB)
 - ES6 module development: https://pakastin.github.io/Liike/liike.es.js (~5 KB)
-- Production: https://pakastin.github.io/Liike/liike.min.js (~2.5 KB)
-- Development: https://pakastin.github.io/Liike/liike.js (~5 KB)
+- UMD production: https://pakastin.github.io/Liike/liike.min.js (~2.5 KB)
+- UMD development: https://pakastin.github.io/Liike/liike.js (~5 KB)
 
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
