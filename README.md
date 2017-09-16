@@ -45,6 +45,16 @@ tween($hello, {
 });
 ```
 
+## Tween settings
+- delay: After how many milliseconds the tween will start
+- duration: How many milliseconds the tween will last
+- easing: Check available easing functions [below](#available-easings)
+- from: Values to start from
+- to: Values to tween to
+- onstart: callback when tween starts `onstart(target)`
+- onprogress: callback while tweening `onprogress(target, t)`
+- onend: callback when tween ends `onend(target)`
+
 # Available easings
 - linear
 - quadIn, quadOut, quadInOut (power to 2)
