@@ -1,8 +1,5 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.liike = factory());
-}(this, (function () { 'use strict';
+(function () {
+'use strict';
 
 var Tween = function Tween (target, handler, settings) {
   var start = settings.start;
@@ -122,7 +119,7 @@ var tick = function (now) {
   }
 };
 
-var index = function (handler) {
+var liike = function (handler) {
   return function (target, settings) {
     var delay = settings.delay; if ( delay === void 0 ) delay = 0;
     var duration = settings.duration; if ( duration === void 0 ) duration = 0;
@@ -153,6 +150,48 @@ var index = function (handler) {
   };
 };
 
-return index;
+var easeInBy = function (power) { return function (t) { return Math.pow(t, power); }; };
+var easeOutBy = function (power) { return function (t) { return 1 - Math.abs(Math.pow(t - 1, power)); }; };
+var easeInOutBy = function (power) { return function (t) { return t < 0.5 ? easeInBy(power)(t * 2) / 2 : easeOutBy(power)(t * 2 - 1) / 2 + 0.5; }; };
 
-})));
+var transform = function (target, data) {
+  var x = data.x; if ( x === void 0 ) x = 0;
+  var y = data.y; if ( y === void 0 ) y = 0;
+  var rotate = data.rotate; if ( rotate === void 0 ) rotate = 0;
+
+  target.style.transform = "translate(" + x + "px, " + y + ") rotate(" + rotate + "deg)";
+};
+
+var tween = liike(transform);
+var $liike = document.getElementById('liike');
+
+$liike.textContent = 'Hello Liike!';
+
+tween($liike, {
+  delay: 1000,
+  duration: 1000,
+  easing: easeInOutBy(3),
+  to: {
+    x: 100
+  }
+});
+
+tween($liike, {
+  delay: 1250,
+  duration: 1500,
+  easing: easeInOutBy(3),
+  to: {
+    rotate: 180
+  }
+});
+
+tween($liike, {
+  delay: 2000,
+  duration: 1000,
+  easing: easeInOutBy(3),
+  to: {
+    x: 0
+  }
+});
+
+}());

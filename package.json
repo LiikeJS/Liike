@@ -4,7 +4,7 @@
   "description": "Liike",
   "main": "index.js",
   "scripts": {
-    "dev": "rollup -n liike -c -f umd -w -i src/index.js -o docs/liike.js"
+    "dev": "rollup -c -f iife -w -i src/index.js -o docs/liike.js"
   },
   "author": "",
   "license": "ISC",

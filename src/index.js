@@ -1,80 +1,43 @@
-import { Tween } from './tween.js';
+import liike from './liike.js';
 
-const tweens = [];
-const jobs = [];
-const nullFunc = () => {};
-const linear = t => t;
+const easeInBy = power => t => Math.pow(t, power);
+const easeOutBy = power => t => 1 - Math.abs(Math.pow(t - 1, power));
+const easeInOutBy = power => t => t < 0.5 ? easeInBy(power)(t * 2) / 2 : easeOutBy(power)(t * 2 - 1) / 2 + 0.5;
 
-let ticking = 0;
+const transform = (target, data) => {
+  const { x = 0, y = 0, rotate = 0 } = data;
 
-const tick = (now) => {
-  while (jobs.length) {
-    const job = jobs.shift();
-
-    job(now);
-  }
-
-  for (let i = 0; i < tweens.length; i++) {
-    const tween = tweens[i];
-
-    if (now < tween.start) {
-      // not yet started
-      continue;
-    }
-
-    if (!tween.running) {
-      tween.running = true;
-      tween.init();
-      tween.onstart();
-    }
-
-    const t = (now - tween.start) / (tween.end - tween.start);
-
-    tween.tick((t < 1) ? t : 1);
-    tween.onprogress(t);
-
-    if (now > tween.end) {
-      tween.onend();
-      tweens.splice(i--, 1);
-    }
-  }
-
-  if (jobs.length || tweens.length) {
-    ticking = window.requestAnimationFrame(tick);
-  } else {
-    ticking = 0;
-  }
+  target.style.transform = `translate(${x}px, ${y}) rotate(${rotate}deg)`;
 };
 
-export default (handler) => {
-  return (target, settings) => {
-    const {
-      delay = 0,
-      duration = 0,
-      from = {},
-      to = {},
-      easing = linear,
-      onprogress = nullFunc,
-      onstart = nullFunc,
-      onend = nullFunc
-    } = settings;
+const tween = liike(transform);
+const $liike = document.getElementById('liike');
 
-    jobs.push((now) => {
-      const tween = new Tween(target, handler, {
-        start: now + delay,
-        end: now + delay + duration,
-        from,
-        to,
-        easing,
-        onstart,
-        onprogress,
-        onend
-      });
+$liike.textContent = 'Hello Liike!';
 
-      tweens.push(tween);
-    });
-    if (!ticking) {
-      ticking = window.requestAnimationFrame(tick);
-    }
-  };
-};
+tween($liike, {
+  delay: 1000,
+  duration: 1000,
+  easing: easeInOutBy(3),
+  to: {
+    x: 100
+  }
+});
+
+tween($liike, {
+  delay: 1250,
+  duration: 1500,
+  easing: easeInOutBy(3),
+  to: {
+    rotate: 180
+  }
+});
+
+tween($liike, {
+  delay: 2000,
+  duration: 1000,
+  easing: easeInOutBy(3),
+  to: {
+    x: 0
+  }
+});
