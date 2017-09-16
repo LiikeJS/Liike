@@ -1,6 +1,6 @@
 {
   "name": "liike",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Tiny JS tweening library.",
   "main": "docs/liike.min.js",
   "module": "docs/liike.es.min.js",
