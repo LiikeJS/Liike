@@ -51,7 +51,7 @@ const animate = () => {
       tween($word, {
         delay: startTime + i * 75,
         duration: 1250,
-        easing: 'bounce',
+        easing: 'bounceOut',
         from: {
           y: -150,
           opacity: 0
