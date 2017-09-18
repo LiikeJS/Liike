@@ -76,7 +76,7 @@ tween($hello, {
 - bounceIn, bounceOut, bounceInOut
 
 # Browser support
-- IE 10 and newer (IE9 and older will need polyfill for [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame))
+- **IE 10** and newer (IE 9 and older will need polyfill for [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame))
 
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
