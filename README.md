@@ -1,7 +1,7 @@
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?maxAge=60&style=flat-square)](https://github.com/Flet/semistandard)
 [![npm](https://img.shields.io/npm/v/liike.svg?maxAge=60&style=flat-square)](https://www.npmjs.com/package/liike)
 [![npm](https://img.shields.io/npm/l/liike.svg?maxAge=60&style=flat-square)](https://github.com/liike/liike/blob/master/LICENSE)
-[![Join the chat at https://gitter.im/pakastin/liike](https://badges.gitter.im/pakastin/liike.svg)](https://gitter.im/pakastin/liike?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/pakastin/liike](https://badges.gitter.im/LiikeJS/Liike.svg)](https://gitter.im/LiikeJS/Liike?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Twitter Follow](https://img.shields.io/twitter/follow/pakastin.svg?style=social&maxAge=60)](https://twitter.com/pakastin)
 [![Twitter Follow](https://img.shields.io/twitter/follow/LiikeJS.svg?style=social&maxAge=60)](https://twitter.com/LiikeJS)
 
@@ -9,6 +9,8 @@
 
 # Liike
 *Liike* is a Finnish word and means *movement*, *motion*. It's a minimalistic library to create performant custom JS tweens no matter what you're tweening.
+
+When you create a tween, Liike will create a single render loop on-demand for every tweens running and use [`DOMHighResTimeStamp`](https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp) (provided by [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)), which should be accurate to 5 µs. If the `delay` is `0`, Liike will start the tween at the next animation frame and count the duration from there.
 
 # Example
 
@@ -29,6 +31,8 @@ npm i liike
 ```js
 import liike from 'liike';
 
+// Define how Liike should animate based on the tweened values:
+//
 const transform = (target, data) => {
   const { x = 0, y = 0, opacity = 1 } = data;
 
@@ -74,7 +78,7 @@ tween($hello, {
 - bounceIn, bounceOut, bounceInOut
 
 # Browser support
-- IE10 or newer (add `requestAnimationFrame` polyfill to support older browsers)
+- **IE 10** and newer (IE 9 and older will need polyfill for [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame))
 
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
