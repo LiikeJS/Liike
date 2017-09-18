@@ -1,9 +1,9 @@
 import liike from '../src/index.js';
 
 const transform = (target, data) => {
-  const { x = 0, y = 0, rotate = 0, opacity = 1 } = data;
+  const { x = 0, y = 0, opacity = 1 } = data;
 
-  target.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${rotate.toFixed(1)}deg)`;
+  target.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
   target.style.opacity = opacity.toFixed(2);
 };
 
