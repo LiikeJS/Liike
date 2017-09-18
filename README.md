@@ -71,5 +71,8 @@ tween($hello, {
 - sineIn, sineOut, sineInOut
 - bounce
 
+# Browser support
+- IE10 or newer (add `requestAnimationFrame` to support older)
+
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
