@@ -5,7 +5,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/pakastin.svg?style=social&maxAge=60)](https://twitter.com/pakastin)
 [![Twitter Follow](https://img.shields.io/twitter/follow/LiikeJS.svg?style=social&maxAge=60)](https://twitter.com/LiikeJS)
 
-![Logo](https://liike.js.org/logo.png)
+![Logo](https://liike.js.org/logo.png?2)
 
 # Liike
 *Liike* is a Finnish word and means *movement*, *motion*. It's a minimalistic library to create performant custom JS tweens no matter what you're tweening.
