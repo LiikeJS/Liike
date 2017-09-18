@@ -72,7 +72,7 @@ tween($hello, {
 - bounce
 
 # Browser support
-- IE10 or newer (add `requestAnimationFrame` to support older)
+- IE10 or newer (add `requestAnimationFrame` polyfill to support older browsers)
 
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)
