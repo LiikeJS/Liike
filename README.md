@@ -31,6 +31,8 @@ npm i liike
 ```js
 import liike from 'liike';
 
+// Define how Liike should animate based on the tweened values:
+//
 const transform = (target, data) => {
   const { x = 0, y = 0, opacity = 1 } = data;
 
