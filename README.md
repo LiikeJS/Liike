@@ -10,6 +10,8 @@
 # Liike
 *Liike* is a Finnish word and means *movement*, *motion*. It's a minimalistic library to create performant custom JS tweens no matter what you're tweening.
 
+When you create a tween, Liike will create a single render loop on-demand for every tweens running and use [`DOMHighResTimeStamp`](https://developer.mozilla.org/en-US/docs/Web/API/DOMHighResTimeStamp), which should be accurate to 5 µs. If the `delay` is `0`, Liike will start the tween at the next animation frame and count the duration from there.
+
 # Example
 
 
