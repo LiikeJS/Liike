@@ -41,7 +41,7 @@ const $hello = document.getElementById('hello');
 tween($hello, {
   delay: 0,
   duration: 1000,
-  easing: 'bounce',
+  easing: 'bounceOut',
   from: {
     y: -100,
     opacity: 0
@@ -69,7 +69,10 @@ tween($hello, {
 - quartIn, quartOut, quartInOut (power to 4)
 - quintIn, quintOut, quintInOut (power to 5)
 - sineIn, sineOut, sineInOut
-- bounce
+- bounceIn, bounceOut, bounceInOut
+
+# Browser support
+- IE10 or newer (add `requestAnimationFrame` polyfill to support older browsers)
 
 # License
 - [MIT](https://github.com/pakastin/Liike/blob/master/LICENSE)

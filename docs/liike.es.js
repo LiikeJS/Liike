@@ -90,7 +90,7 @@ var quintInOut = easeInOutBy(5);
 var sineIn = function (t) { return 1 + Math.sin(Math.PI / 2 * t - Math.PI / 2); };
 var sineOut = function (t) { return Math.sin(Math.PI / 2 * t); };
 var sineInOut = function (t) { return (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2; };
-var bounce = function (t) {
+var bounceOut = function (t) {
   var s = 7.5625;
   var p = 2.75;
 
@@ -108,6 +108,8 @@ var bounce = function (t) {
   t -= 2.625 / p;
   return s * t * t + 0.984375;
 };
+var bounceIn = function (t) { return 1 - bounceOut(1 - t); };
+var bounceInOut = function (t) { return t < 0.5 ? bounceIn(t * 2) * 0.5 : bounceOut(t * 2 - 1) * 0.5 + 0.5; };
 
 
 var ease = Object.freeze({
@@ -127,7 +129,9 @@ var ease = Object.freeze({
 	sineIn: sineIn,
 	sineOut: sineOut,
 	sineInOut: sineInOut,
-	bounce: bounce
+	bounceOut: bounceOut,
+	bounceIn: bounceIn,
+	bounceInOut: bounceInOut
 });
 
 var tweens = [];

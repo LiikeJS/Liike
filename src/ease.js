@@ -19,7 +19,7 @@ export const quintInOut = easeInOutBy(5);
 export const sineIn = t => 1 + Math.sin(Math.PI / 2 * t - Math.PI / 2);
 export const sineOut = t => Math.sin(Math.PI / 2 * t);
 export const sineInOut = t => (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2;
-export const bounce = t => {
+export const bounceOut = t => {
   const s = 7.5625;
   const p = 2.75;
 
@@ -37,3 +37,5 @@ export const bounce = t => {
   t -= 2.625 / p;
   return s * t * t + 0.984375;
 };
+export const bounceIn = t => 1 - bounceOut(1 - t);
+export const bounceInOut = t => t < 0.5 ? bounceIn(t * 2) * 0.5 : bounceOut(t * 2 - 1) * 0.5 + 0.5;
