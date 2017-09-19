@@ -1,9 +1,7 @@
 import { Tween } from './tween.js';
 import * as ease from './ease';
 
-const tweens = [];
-const jobs = [];
-const nullFunc = () => {};
+const [ tweens, jobs, nullFunc ] = [ [], [], () => {} ];
 
 let ticking = 0;
 
