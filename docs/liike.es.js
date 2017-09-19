@@ -134,9 +134,10 @@ var ease = Object.freeze({
 	bounceInOut: bounceInOut
 });
 
-var tweens = [];
-var jobs = [];
-var nullFunc = function () {};
+var ref = [ [], [], function () {} ];
+var tweens = ref[0];
+var jobs = ref[1];
+var nullFunc = ref[2];
 
 var ticking = 0;
 
