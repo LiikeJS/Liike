@@ -20,7 +20,7 @@ for (let j = 0; j < $sections.length; j++) {
   const words = $p.textContent.trim().split(' ');
 
   $p.textContent = '';
-  $section.style.position = 'absolute';
+  $section.style.position = 'fixed';
 
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
